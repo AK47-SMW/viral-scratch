@@ -1,0 +1,350 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #080b14;
+  --panel: #101625;
+  --panel-2: #151d30;
+  --text: #f7f8fc;
+  --muted: #9ba5bb;
+  --gold: #f7c85c;
+  --gold-2: #ffe7a1;
+  --green: #22c55e;
+  --border: rgba(255,255,255,.09);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(247,200,92,.14), transparent 35%),
+    radial-gradient(circle at 0% 60%, rgba(84,112,255,.10), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  width: min(100%, 760px);
+  margin: auto;
+  padding: 42px 20px 24px;
+}
+
+.hero {
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid rgba(247,200,92,.22);
+  border-radius: 999px;
+  background: rgba(247,200,92,.07);
+  color: var(--gold-2);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+h1 {
+  margin-top: 18px;
+  font-size: clamp(42px, 9vw, 76px);
+  line-height: .95;
+  letter-spacing: -.055em;
+}
+
+h1 span {
+  color: var(--gold);
+}
+
+.sub {
+  max-width: 480px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.trust-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px auto 28px;
+}
+
+.trust-row span {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: #b9c1d2;
+  background: rgba(255,255,255,.025);
+  font-size: 11px;
+}
+
+.scratch-wrap {
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.scratch-card {
+  position: relative;
+  width: min(100%, 390px);
+  aspect-ratio: 1.58 / 1;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #191f31, #0e1320);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    inset 0 1px rgba(255,255,255,.12);
+}
+
+.card-glow {
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(247,200,92,.18),
+    transparent 25%,
+    rgba(255,255,255,.06),
+    transparent 50%
+  );
+  animation: rotate 7s linear infinite;
+  pointer-events: none;
+}
+
+.reward {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(247,200,92,.14), transparent 35%),
+    linear-gradient(145deg, #182033, #0b101c);
+}
+
+.reward-kicker,
+.result-label {
+  color: #9da8be;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.reward-icon {
+  margin: 10px 0 2px;
+  font-size: 43px;
+}
+
+.reward-value {
+  color: var(--gold-2);
+  font-size: clamp(26px, 7vw, 40px);
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+
+.reward-note {
+  margin-top: 5px;
+  color: #8993a8;
+  font-size: 12px;
+}
+
+#scratchCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.scratch-hint {
+  margin-top: 15px;
+  color: #aeb7c9;
+  font-size: 13px;
+  animation: pulse 1.7s ease-in-out infinite;
+}
+
+.result,
+.unlock {
+  margin: 30px auto 0;
+  width: min(100%, 500px);
+  padding: 30px 22px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: rgba(16,22,37,.88);
+  box-shadow: 0 20px 60px rgba(0,0,0,.28);
+  text-align: center;
+  animation: rise .45s ease both;
+}
+
+.result-burst {
+  font-size: 38px;
+  margin-bottom: 7px;
+}
+
+.result h2,
+.unlock h2 {
+  margin-top: 7px;
+  font-size: 30px;
+  letter-spacing: -.035em;
+}
+
+.result p,
+.unlock > p {
+  margin: 9px auto 20px;
+  max-width: 390px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.primary-btn,
+.whatsapp-btn {
+  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  padding: 15px 18px;
+  font-weight: 850;
+  cursor: pointer;
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #ffe29a, #eeb84a);
+  color: #18140a;
+  box-shadow: 0 10px 30px rgba(247,200,92,.18);
+}
+
+.primary-btn:hover,
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.unlock-icon {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.progress-box {
+  margin: 20px 0 16px;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  color: #aab4c7;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.progress-top strong {
+  color: var(--gold-2);
+}
+
+.progress-track {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #242c3c;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #eeb84a, #ffe29a);
+  transition: width .35s ease;
+}
+
+.whatsapp-btn {
+  background: #20c66a;
+  color: #07130b;
+}
+
+.wa-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-size: 9px;
+  vertical-align: -2px;
+}
+
+.small-note {
+  margin: 12px auto 0 !important;
+  font-size: 10px !important;
+  color: #727d91 !important;
+}
+
+.back-btn {
+  margin-top: 18px;
+  border: 0;
+  background: transparent;
+  color: #8994aa;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 42px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  color: #687287;
+  font-size: 10px;
+  letter-spacing: .05em;
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  50% { opacity: .5; transform: translateY(2px); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 460px) {
+  .app {
+    padding-top: 30px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  .scratch-card {
+    border-radius: 20px;
+  }
+}

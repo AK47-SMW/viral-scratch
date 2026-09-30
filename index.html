@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Mystery Scratch — Reveal Your Surprise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero" id="hero">
+      <div class="badge">✨ MYSTERY DROP</div>
+      <h1>You’ve got a<br><span>surprise.</span></h1>
+      <p class="sub">Scratch the card and discover your random virtual reward.</p>
+
+      <div class="trust-row">
+        <span>⚡ Instant reveal</span>
+        <span>🔒 No sign-up</span>
+        <span>🎁 Just for fun</span>
+      </div>
+
+      <div class="scratch-wrap">
+        <div class="scratch-card" id="scratchCard">
+          <div class="card-glow"></div>
+          <div class="reward" id="reward">
+            <div class="reward-kicker">YOUR MYSTERY REWARD</div>
+            <div class="reward-icon" id="rewardIcon">🎁</div>
+            <div class="reward-value" id="rewardValue">REVEAL ME</div>
+            <div class="reward-note" id="rewardNote">Scratch the silver layer</div>
+          </div>
+          <canvas id="scratchCanvas" aria-label="Scratch card"></canvas>
+        </div>
+      </div>
+
+      <div class="scratch-hint" id="scratchHint">☝️ Scratch anywhere on the card</div>
+
+      <section class="result" id="result" hidden>
+        <div class="result-burst">🎉</div>
+        <div class="result-label">YOU REVEALED</div>
+        <h2 id="resultTitle">A surprise!</h2>
+        <p id="resultDescription"></p>
+
+        <button class="primary-btn" id="claimBtn">Claim / View Reward</button>
+      </section>
+    </section>
+
+    <section class="unlock" id="unlock" hidden>
+      <div class="unlock-icon">🔐</div>
+      <div class="badge">ONE LAST STEP</div>
+      <h2>Your surprise is ready.</h2>
+      <p>Send this scratch card to friends and compare what everyone gets.</p>
+
+      <div class="progress-box">
+        <div class="progress-top">
+          <span>Share progress</span>
+          <strong><span id="shareCount">0</span> / 5</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <button class="whatsapp-btn" id="whatsappBtn">
+        <span class="wa-icon">◉</span>
+        Share on WhatsApp
+      </button>
+
+      <p class="small-note">Sharing is optional and this page does not verify whether a message was actually sent.</p>
+
+      <button class="back-btn" id="backBtn">← Back to my result</button>
+    </section>
+
+    <footer>
+      <span>MYSTERY SCRATCH</span>
+      <span>Entertainment only • Virtual rewards</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
